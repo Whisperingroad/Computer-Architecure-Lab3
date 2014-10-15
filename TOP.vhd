@@ -110,6 +110,8 @@ constant INSTR_MEM : MEM_256x32 := (
 			x"3c0a0000", -- loop: 	lui $t2, 0x0000
 			x"354a0004", -- 			ori $t2, 0x0004 # delay counter (n). Change according to the clock
 			x"01495022", -- delay: 	sub $t2, $t2, $t1  --12cycles ;3 lines bottom
+			x"354a0004", -- 			ori $t2, 0x0004 # delay counter (n). Change according to the clock --3 delay instructions, Delay counter = 4 implies 12 instructions will be wasted
+			x"01495022", -- delay: 	sub $t2, $t2, $t1 
 			x"0149582a", -- 			slt $t3, $t2, $t1
 			x"1160fffd", -- 			beq $t3, $zero, delay
 			x"ad0c0000", -- 			sw  $t4, 0($t0)	

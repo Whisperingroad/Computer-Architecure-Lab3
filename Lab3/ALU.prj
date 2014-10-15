@@ -1,0 +1,2 @@
+vhdl work "../ADDSUB.vhd"
+vhdl work "../ALU.vhd"

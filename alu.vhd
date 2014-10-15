@@ -21,6 +21,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_unsigned.ALL;
 
 entity ALU is
+generic (width	: integer := 32);
     Port ( 	ALU_InA 		: in  STD_LOGIC_VECTOR (31 downto 0);				
 				ALU_InB 		: in  STD_LOGIC_VECTOR (31 downto 0);
 				ALU_Out 		: out STD_LOGIC_VECTOR (31 downto 0);
@@ -31,7 +32,37 @@ end ALU;
 
 architecture arch_ALU of ALU is
 
+
+------------------------------------------------------------------------------------
+-- AddSub instantiation
+------------------------------------------------------------------------------------
+
+component ADDSUB is
+generic (width : integer);
+port (A 		: in 	std_logic_vector(width-1 downto 0);
+		B 		: in 	std_logic_vector(width-1 downto 0);
+		INVERSE 	: in 	std_logic;
+		SUM 		: out std_logic_vector(width-1 downto 0);
+		CARRY	: out std_logic);
+end component;
+
+-------------------------------------------------------------------------------------
+-- AddSub signals
+-------------------------------------------------------------------------------------
+signal INVERSE 	: std_logic := '0';
+signal SUM 		: std_logic_vector(31 downto 0) := (others => '0'); 
+signal CARRY	: std_logic := '0'; --not used
+
+-------------------------------------------------------------------------------------
+-- Port maps
+-------------------------------------------------------------------------------------
+-- <port maps>
 begin
+AddSubtraction: ADDSUB generic map (width => width) port map ( A=> ALU_InA, B=> ALU_InB, Inverse => ALU_Control(1), SUM => SUM); 
+-- </port maps>
+
+
+--begin
 process(ALU_Control,ALU_InA,ALU_InB)
 variable AplusB 	: STD_LOGIC_VECTOR (31 downto 0);
 variable AminusB 	: STD_LOGIC_VECTOR (31 downto 0);
@@ -57,9 +88,9 @@ when "01" => -- beq
 when "10" =>
 	case ALU_Control(5 downto 0) is
 	when "100000"=> --add
-		ALU_Out <= AplusB;
+		ALU_Out <= SUM;
 	when "100010"=> --sub
-		ALU_Out <= AminusB;
+		ALU_Out <= SUM;
 	when "100100"=> --and
 		ALU_Out <= ALU_InA and ALU_InB;
 	when "100101"=> --or

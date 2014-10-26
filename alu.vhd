@@ -31,6 +31,7 @@ end ALU;
 
 architecture arch_ALU of ALU is
 
+begin
 
 process(ALU_Control,ALU_InA,ALU_InB)
 variable AplusB 	: STD_LOGIC_VECTOR (31 downto 0);

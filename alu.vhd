@@ -29,7 +29,6 @@ generic (width	: integer := 32);
 				ALU_zero		: out STD_LOGIC);
 end ALU;
 
-
 architecture arch_ALU of ALU is
 
 

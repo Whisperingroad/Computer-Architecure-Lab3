@@ -252,9 +252,14 @@ DATA_In;
 --ALU
 ALU_InA  <= ReadData1_Reg; 
 
-ALU_InB <= ReadData2_Reg when ALUSrc = '0' else 
+ALU_InB <= ReadData2_Reg when ALUSrc = '0' else -- Rtype/ BEQ
+
 Instr(15 downto 0)& x"0000" when InstrtoReg = '1' else -- LUI
-x"0000" & Instr(15 downto 0) when SignExtend = '0' else -- ORI/R Type
+
+x"0000" & Instr(15 downto 0) when ALUOp = "11" and InstrtoReg = '0' else --ORI
+
+--x"0000" & Instr(15 downto 0) when SignExtend = '0' else -- ORI/R Type
+
 signExtendout; -- LW/SW
 
 

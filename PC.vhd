@@ -30,7 +30,15 @@ end PC;
 architecture arch_PC of PC is
 begin
 
---<implement PC here>
+process(CLK)
+begin
+
+if RESET = '1' then
+		PC_out <= x"00400000";
+
+elsif (CLK'event and CLK='1') then
+		PC_out <= PC_out + 4;
+
 
 end arch_PC;
 

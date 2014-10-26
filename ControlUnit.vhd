@@ -101,10 +101,8 @@ begin
 		RegWrite <= '1';
 		RegDst <= '0';
 
-
-
-	--add (R-type)
-	when "100000" =>
+	--ADD,SUB, OR, NOR, SLT
+	when "000000" =>
 		ALUOp <= "10";
 		Branch <= '0';
 		Jump <= '0';
@@ -116,65 +114,7 @@ begin
 		SignExtend <= '0';
 		RegWrite <= '1';
 		RegDst <= '1';
-		
-		
-	--sub (R-type)
-	when "100010" =>
-		ALUOp <= "10";
-		Branch <= '0';
-		Jump <= '0';
-		MemRead <= '0';
-		MemToReg <= '0';
-		InstrtoReg <= '0';
-		MemWrite <= '0';
-		ALUSrc <= '0';
-		SignExtend <= '0';
-		RegWrite <= '1';
-		RegDst <= '1';
-
-	--or (R-type)
-	when "100101" =>
-		ALUOp <= "10";
-		Branch <= '0';
-		Jump <= '0';
-		MemRead <= '0';
-		MemToReg <= '0';
-		InstrtoReg <= '0';
-		MemWrite <= '0';
-		ALUSrc <= '0';
-		SignExtend <= '0';
-		RegWrite <= '1';
-		RegDst <= '1';
-		
-	--nor (R-type)
-	when "100111" =>
-		ALUOp <= "10";
-		Branch <= '0';
-		Jump <= '0';
-		MemRead <= '0';
-		MemToReg <= '0';
-		InstrtoReg <= '0';
-		MemWrite <= '0';
-		ALUSrc <= '0';
-		SignExtend <= '0';
-		RegWrite <= '1';
-		RegDst <= '1';
-		
-	--slt (R-type)
-	when "100101" =>
-		ALUOp <= "10";
-		Branch <= '0';
-		Jump <= '0';
-		MemRead <= '0';
-		MemToReg <= '0';
-		InstrtoReg <= '0';
-		MemWrite <= '0';
-		ALUSrc <= '0';
-		SignExtend <= '0';
-		RegWrite <= '1';
-		RegDst <= '1';
-		
-
+	
 	--beq
 	when "000100" =>
 		ALUOp <= "01";
@@ -188,7 +128,6 @@ begin
 		SignExtend <= '1';
 		RegWrite <= '0';
 		RegDst <= 'X';
-
 	
 	--j
 	when "000010" =>

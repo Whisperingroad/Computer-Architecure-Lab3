@@ -34,7 +34,9 @@ begin
 process(CLK)
 begin
 
-if RESET = '1' then
+-- reset pc_out to the start hexa
+-- Address Range of Instruction Memory is 0x00400000 to 0x004003FC (word addressable - only multiples of 4 are valid)
+if RESET = '1' or PC_in = x"0x004003FC"  then   
 		PC_out <= x"00400000";
 
 elsif (CLK'event and CLK='1') then

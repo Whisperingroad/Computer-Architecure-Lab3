@@ -18,6 +18,7 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity PC is
 	Port(	PC_in 	: in STD_LOGIC_VECTOR (31 downto 0);
@@ -37,8 +38,9 @@ if RESET = '1' then
 		PC_out <= x"00400000";
 
 elsif (CLK'event and CLK='1') then
-		PC_out <= PC_out + 4;
+		PC_out <= PC_in + 4;
 
-
+end if;
+end process;
 end arch_PC;
 

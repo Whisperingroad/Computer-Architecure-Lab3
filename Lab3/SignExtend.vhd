@@ -29,31 +29,18 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity SignExtend is
+entity Sign_Extend is
     Port ( signExtendInput : in  STD_LOGIC_VECTOR (15 downto 0);
-           signExtendOutput : out  STD_LOGIC_VECTOR (31 downto 0);
-           Enable : in  STD_LOGIC);
-end SignExtend;
+           signExtendOutput : out  STD_LOGIC_VECTOR (31 downto 0));
+end Sign_Extend;
 
-architecture Behavioral of SignExtend is
+architecture Behavioral of Sign_Extend is
 
 begin
-
-process (Enable, signExtendInput)
-begin
-
-if (Enable = 1) then
 	--For MSB
-	signExtendOutput(31 downto 15) = (others => signExtendInput(15))
+	signExtendOutput(31 downto 15) <= (others => signExtendInput(15));
 	--For Inputs
-	signExtendOutput (15 downto 0) = signExtendInput (15 downto 0)
-
-else
-	--return 0s if not enabled
-	signExtendOutput(31 downto 0) = (others => '0')
-	
-end if
-
+	signExtendOutput (15 downto 0) <= signExtendInput (15 downto 0);
 
 end Behavioral;
 

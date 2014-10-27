@@ -48,12 +48,11 @@ begin
 
 process(CLK)
 begin
-
-if (CLK'event and CLK='1') then
-	-- read content of register
+	-- read content of register (can be read anytime)
 	ReadData1_Reg <= registers(conv_integer(ReadAddr1_Reg));
 	ReadData2_Reg <= registers(conv_integer(ReadAddr2_Reg));
-	
+
+if (CLK'event and CLK='1') then	
 	if RegWrite = '1' then 
 		registers(conv_integer(WriteAddr_Reg)) <= WriteData_Reg; --write into register
 	end if;

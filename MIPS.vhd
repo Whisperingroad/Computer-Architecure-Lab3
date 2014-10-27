@@ -95,6 +95,13 @@ component RegFile is
 end component;
 
 ----------------------------------------------------------------
+-- Sign Extend
+----------------------------------------------------------------
+component Sign_Extend is
+    Port ( signExtendInput : in  STD_LOGIC_VECTOR (15 downto 0);
+           signExtendOutput : out  STD_LOGIC_VECTOR (31 downto 0));
+end component;
+----------------------------------------------------------------
 -- PC Signals
 ----------------------------------------------------------------
 	signal	PC_in 		:  STD_LOGIC_VECTOR (31 downto 0);
@@ -132,7 +139,12 @@ end component;
 	signal	ReadData2_Reg 	:  STD_LOGIC_VECTOR (31 downto 0);
 	signal	WriteAddr_Reg	:  STD_LOGIC_VECTOR (4 downto 0); 
 	signal	WriteData_Reg 	:  STD_LOGIC_VECTOR (31 downto 0);
-
+	
+----------------------------------------------------------------
+-- Sign Extend
+----------------------------------------------------------------
+	signal	signExtendin 		:  STD_LOGIC_VECTOR (15 downto 0);
+	signal	signExtendout		:  STD_LOGIC_VECTOR (31 downto 0);
 ----------------------------------------------------------------
 -- Other Signals
 ----------------------------------------------------------------
@@ -204,9 +216,45 @@ RegFile1			: RegFile port map
 						);
 
 ----------------------------------------------------------------
+-- SignExtend port map
+----------------------------------------------------------------
+SignExtend1 				: Sign_Extend port map
+						(
+						signExtendInput => signExtendin, 
+						signExtendOutput => signExtendout 						
+						);
+						
+
+----------------------------------------------------------------
 -- Processor logic
 ----------------------------------------------------------------
 --<Rest of the logic goes here>
+
+--PC
+
+
+--RegFile
+ReadAddr1_Reg <= Instr(25 downto 21); 
+ReadAddr2_Reg <= Instr(20 downto 16);
+
+WriteAddr_Reg <= Instr(20 downto 16) when RegDst = '0' else -- choose rt or rd
+Instr(15 downto 11);
+WriteData_Reg <= ALU_Out when MemtoReg = '0' else -- choose rt or rd
+DATA_In;
+
+
+--ALU
+ALU_InA  <= ReadData1_Reg; 
+
+ALU_InB <= ReadData2_Reg when ALUSrc = '0' else 
+Instr(15 downto 0)& x"0000" when InstrtoReg = '1' else -- LUI
+x"0000" & Instr(15 downto 0) when SignExtend = '0' else -- ORI/R Type
+signExtendout; -- LW/SW
+
+
+--Control Unit
+opcode <= Instr(31 downto 26);
+
 
 end arch_MIPS;
 

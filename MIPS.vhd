@@ -231,11 +231,11 @@ SignExtend1 				: Sign_Extend port map
 --<Rest of the logic goes here>
 
 --SignExtend
-signExtendInput <= Instr(15 downto 0);
+signExtendin <= Instr(15 downto 0);
 
 --PC
 
-PC_in <= PC_out + (signExtendOutput(29 downto 0) & "00")  when Branch = '1' and ALU_zero = '1' else -- Branch (beq) 
+PC_in <= PC_out + (signExtendout(29 downto 0) & "00")  when Branch = '1' and ALU_zero = '1' else -- Branch (beq) 
 PC_out(31 downto 28) &(Instr(25 downto 0)& "00") when Jump = '1' else --Jump
 PC_out; -- R-type / Lw/ Sw
 

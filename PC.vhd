@@ -31,12 +31,12 @@ end PC;
 architecture arch_PC of PC is
 begin
 
-process(CLK)
+process(CLK, RESET,PC_in)
 begin
 
 -- reset pc_out to the start hexa
 -- Address Range of Instruction Memory is 0x00400000 to 0x004003FC (word addressable - only multiples of 4 are valid)
-if RESET = '1' or PC_in = x"0x004003FC"  then   
+if RESET = '1' or PC_in = x"004003FC"  then   
 		PC_out <= x"00400000";
 
 elsif (CLK'event and CLK='1') then

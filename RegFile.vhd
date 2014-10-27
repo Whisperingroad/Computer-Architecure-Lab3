@@ -46,11 +46,12 @@ signal registers: reg_32 := (x"00000000", x"00000001", x"00000002", x"00000003",
 								 x"0000001C", x"0000001D", x"0000001E", x"0000001F");
 begin
 
+-- read content of register (can be read anytime)
+ReadData1_Reg <= registers(conv_integer(ReadAddr1_Reg));
+ReadData2_Reg <= registers(conv_integer(ReadAddr2_Reg));
+
 process(CLK)
 begin
-	-- read content of register (can be read anytime)
-	ReadData1_Reg <= registers(conv_integer(ReadAddr1_Reg));
-	ReadData2_Reg <= registers(conv_integer(ReadAddr2_Reg));
 
 if (CLK'event and CLK='1') then	
 	if RegWrite = '1' then 
@@ -59,4 +60,6 @@ if (CLK'event and CLK='1') then
 end if;
 end process;
 end arch_RegFile;
+
+
 

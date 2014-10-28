@@ -163,10 +163,10 @@ Synthesizing Unit <TOP>.
     Found 26-bit register for signal <CLK_DIV_PROCESS.clk_counter>.
     Found 1-bit register for signal <CLK>.
     Found 1-bit register for signal <LED<7>>.
-    Found 26-bit adder for signal <CLK_DIV_PROCESS.clk_counter[25]_GND_5_o_add_12_OUT> created at line 211.
+    Found 26-bit adder for signal <CLK_DIV_PROCESS.clk_counter[25]_GND_5_o_add_12_OUT> created at line 215.
     Found 256x32-bit Read Only RAM for signal <Addr_Instr[9]_GND_5_o_wide_mux_8_OUT>
-    Found 32-bit comparator lessequal for signal <n0000> created at line 156
-    Found 32-bit comparator lessequal for signal <n0002> created at line 156
+    Found 32-bit comparator lessequal for signal <n0000> created at line 160
+    Found 32-bit comparator lessequal for signal <n0002> created at line 160
     Summary:
 	inferred   2 RAM(s).
 	inferred   1 Adder/Subtractor(s).
@@ -697,11 +697,11 @@ CLK_undiv      |    2.743|         |         |         |
 
 
 Total REAL time to Xst completion: 12.00 secs
-Total CPU time to Xst completion: 12.69 secs
+Total CPU time to Xst completion: 12.36 secs
  
 --> 
 
-Total memory usage is 354572 kilobytes
+Total memory usage is 354564 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    2 (   0 filtered)

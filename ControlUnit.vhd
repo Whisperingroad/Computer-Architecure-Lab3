@@ -70,7 +70,7 @@ begin
 		MemWrite <= '1';
 		ALUSrc <= '1';
 		SignExtend <= '1';
-		RegWrite <= '1';
+		RegWrite <= '0';
 		RegDst <= 'X';	
 
 	--lui (upper immediate bits)
@@ -138,7 +138,7 @@ begin
 		MemToReg <= 'X';
 		InstrtoReg <= '0';
 		MemWrite <= '0';
-		ALUSrc <= '0';
+		ALUSrc <= 'X';
 		SignExtend <= '0';
 		RegWrite <= '0';
 		RegDst <= 'X';
@@ -149,13 +149,13 @@ begin
 		Branch <= '0';
 		Jump <= '0';
 		MemRead <= '0';
-		MemToReg <= '0';
+		MemToReg <= 'X';
 		InstrtoReg <= '0';
 		MemWrite <= '0';
-		ALUSrc <= '0';
-		SignExtend <= '0';
+		ALUSrc <= 'X';
+		SignExtend <= 'X';
 		RegWrite <= '0';
-		RegDst <= '0';
+		RegDst <= 'X';
 
 
 	end case;

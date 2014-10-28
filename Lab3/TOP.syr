@@ -163,10 +163,10 @@ Synthesizing Unit <TOP>.
     Found 26-bit register for signal <CLK_DIV_PROCESS.clk_counter>.
     Found 1-bit register for signal <CLK>.
     Found 1-bit register for signal <LED<7>>.
-    Found 26-bit adder for signal <CLK_DIV_PROCESS.clk_counter[25]_GND_5_o_add_12_OUT> created at line 213.
+    Found 26-bit adder for signal <CLK_DIV_PROCESS.clk_counter[25]_GND_5_o_add_12_OUT> created at line 211.
     Found 256x32-bit Read Only RAM for signal <Addr_Instr[9]_GND_5_o_wide_mux_8_OUT>
-    Found 32-bit comparator lessequal for signal <n0000> created at line 158
-    Found 32-bit comparator lessequal for signal <n0002> created at line 158
+    Found 32-bit comparator lessequal for signal <n0000> created at line 156
+    Found 32-bit comparator lessequal for signal <n0002> created at line 156
     Summary:
 	inferred   2 RAM(s).
 	inferred   1 Adder/Subtractor(s).
@@ -422,13 +422,13 @@ Top Level Output File Name         : TOP.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 928
+# BELS                             : 925
 #      GND                         : 1
 #      INV                         : 2
 #      LUT1                        : 50
 #      LUT2                        : 4
-#      LUT3                        : 30
-#      LUT4                        : 48
+#      LUT3                        : 29
+#      LUT4                        : 46
 #      LUT5                        : 91
 #      LUT6                        : 370
 #      MUXCY                       : 178
@@ -459,16 +459,16 @@ Selected Device : 7a100tcsg324-1
 
 Slice Logic Utilization: 
  Number of Slice Registers:              65  out of  126800     0%  
- Number of Slice LUTs:                  771  out of  63400     1%  
-    Number used as Logic:               595  out of  63400     0%  
+ Number of Slice LUTs:                  768  out of  63400     1%  
+    Number used as Logic:               592  out of  63400     0%  
     Number used as Memory:              176  out of  19000     0%  
        Number used as RAM:              176
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    772
-   Number with an unused Flip Flop:     707  out of    772    91%  
-   Number with an unused LUT:             1  out of    772     0%  
-   Number of fully used LUT-FF pairs:    64  out of    772     8%  
+ Number of LUT Flip Flop pairs used:    769
+   Number with an unused Flip Flop:     704  out of    769    91%  
+   Number with an unused LUT:             1  out of    769     0%  
+   Number of fully used LUT-FF pairs:    64  out of    769     8%  
    Number of unique control sets:         3
 
 IO Utilization: 
@@ -511,8 +511,8 @@ Timing Summary:
 ---------------
 Speed Grade: -1
 
-   Minimum period: 11.208ns (Maximum Frequency: 89.223MHz)
-   Minimum input arrival time before clock: 3.654ns
+   Minimum period: 11.188ns (Maximum Frequency: 89.382MHz)
+   Minimum input arrival time before clock: 3.511ns
    Maximum output required time after clock: 1.028ns
    Maximum combinational path delay: No path found
 
@@ -570,10 +570,10 @@ Delay:               2.743ns (Levels of Logic = 27)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'CLK'
-  Clock period: 11.208ns (frequency: 89.223MHz)
-  Total number of paths / destination ports: 650459144 / 562
+  Clock period: 11.188ns (frequency: 89.382MHz)
+  Total number of paths / destination ports: 650372020 / 562
 -------------------------------------------------------------------------
-Delay:               11.208ns (Levels of Logic = 22)
+Delay:               11.188ns (Levels of Logic = 22)
   Source:            MIPS1/PC1/PC_out_8 (FF)
   Destination:       MIPS1/PC1/PC_out_2 (FF)
   Source Clock:      CLK rising
@@ -583,9 +583,9 @@ Delay:               11.208ns (Levels of Logic = 22)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDC:C->Q              8   0.478   0.762  MIPS1/PC1/PC_out_8 (MIPS1/PC1/PC_out_8)
-     LUT3:I0->O           13   0.124   0.501  Mram_Addr_Instr[9]_GND_5_o_wide_mux_8_OUT1211_SW0 (N01)
-     LUT6:I5->O           11   0.124   0.985  Mram_Addr_Instr[9]_GND_5_o_wide_mux_8_OUT5211 (Addr_Instr[9]_GND_5_o_wide_mux_8_OUT<26>)
+     FDC:C->Q              7   0.478   0.756  MIPS1/PC1/PC_out_8 (MIPS1/PC1/PC_out_8)
+     LUT3:I0->O           11   0.124   0.487  Mram_Addr_Instr[9]_GND_5_o_wide_mux_8_OUT1211_SW0 (N01)
+     LUT6:I5->O           11   0.124   0.985  Mram_Addr_Instr[9]_GND_5_o_wide_mux_8_OUT5811 (Addr_Instr[9]_GND_5_o_wide_mux_8_OUT<29>)
      LUT6:I1->O           82   0.124   0.879  MIPS1/ControlUnit1/InstrtoReg<5>1 (MIPS1/InstrtoReg)
      LUT6:I3->O            1   0.124   0.000  MIPS1/ALU1/Msub_AminusB_lut<0> (MIPS1/ALU1/Msub_AminusB_lut<0>)
      MUXCY:S->O            1   0.472   0.000  MIPS1/ALU1/Msub_AminusB_cy<0> (MIPS1/ALU1/Msub_AminusB_cy<0>)
@@ -608,14 +608,14 @@ Delay:               11.208ns (Levels of Logic = 22)
      LUT6:I2->O           30   0.124   0.551  MIPS1/PC1/RESET_PC_in[31]_OR_32_o6 (MIPS1/PC1/RESET_PC_in[31]_OR_32_o)
      FDC:CLR                   0.494          MIPS1/PC1/PC_out_30
     ----------------------------------------
-    Total                     11.208ns (3.392ns logic, 7.816ns route)
+    Total                     11.188ns (3.392ns logic, 7.796ns route)
                                        (30.3% logic, 69.7% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'CLK'
   Total number of paths / destination ports: 90 / 62
 -------------------------------------------------------------------------
-Offset:              3.654ns (Levels of Logic = 5)
+Offset:              3.511ns (Levels of Logic = 5)
   Source:            DIP<11> (PAD)
   Destination:       MIPS1/RegFile1/Mram_registers2 (RAM)
   Destination Clock: CLK rising
@@ -625,14 +625,14 @@ Offset:              3.654ns (Levels of Logic = 5)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      IBUF:I->O             2   0.001   0.925  DIP_11_IBUF (DIP_11_IBUF)
-     LUT5:I0->O            1   0.124   0.919  MemRead_dec_DIP_AND_51_o18_SW25 (N221)
-     LUT6:I1->O            1   0.124   0.536  MIPS1/Mmux_WriteData_Reg33_SW1 (N62)
+     LUT5:I0->O            1   0.124   0.776  MemRead_dec_DIP_AND_51_o18_SW25 (N221)
+     LUT6:I2->O            1   0.124   0.536  MIPS1/Mmux_WriteData_Reg33_SW1 (N62)
      LUT6:I4->O            1   0.124   0.000  MIPS1/Mmux_WriteData_Reg33_G (N289)
      MUXF7:I1->O           2   0.368   0.405  MIPS1/Mmux_WriteData_Reg33 (MIPS1/WriteData_Reg<11>)
      RAM32M:DIC1               0.128          MIPS1/RegFile1/Mram_registers12
     ----------------------------------------
-    Total                      3.654ns (0.869ns logic, 2.785ns route)
-                                       (23.8% logic, 76.2% route)
+    Total                      3.511ns (0.869ns logic, 2.642ns route)
+                                       (24.8% logic, 75.2% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'CLK_undiv'
@@ -682,7 +682,7 @@ Clock to Setup on destination clock CLK
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-CLK            |   11.208|         |         |         |
+CLK            |   11.188|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock CLK_undiv
@@ -696,12 +696,12 @@ CLK_undiv      |    2.743|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 13.00 secs
-Total CPU time to Xst completion: 12.60 secs
+Total REAL time to Xst completion: 12.00 secs
+Total CPU time to Xst completion: 12.69 secs
  
 --> 
 
-Total memory usage is 354580 kilobytes
+Total memory usage is 354572 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    2 (   0 filtered)

@@ -230,41 +230,50 @@ SignExtend1 				: Sign_Extend port map
 ----------------------------------------------------------------
 --<Rest of the logic goes here>
 
---SignExtend
+--Fetching of instructions accounted for by PC1
+
+--Decoding instructions for Control Unit
+opcode <= Instr(31 downto 26);
+ReadAddr1_Reg <= Instr(25 downto 21); 
+ReadAddr2_Reg <= Instr(20 downto 16);
+
+
+--SignExtend for address offset
+--for load and store operations
 signExtendin <= Instr(15 downto 0);
 
---PC
 
+--Inputs for ALU
+ALU_Control <= ALUOp & Instr(5 downto 0);
+
+--Unconditional
+ALU_InA  <= ReadData1_Reg;
+
+--for R type and BEQ operations 
+
+ALU_InB <= ReadData2_Reg when ALUSrc = '0' else
+--ALUSrc = 1 
+Instr(15 downto 0)& x"0000" when InstrtoReg = '1' else -- LUI
+--x"0000" & Instr(15 downto 0) when ALUOp = "11" and InstrtoReg = '0' else --ORI
+x"0000" & Instr(15 downto 0) when SignExtend = '0' else -- ORI
+signExtendout; -- LW/SW
+
+--PC
 PC_in <= PC_out + (signExtendout(29 downto 0) & "00")  when Branch = '1' and ALU_zero = '1' else -- Branch (beq) 
 PC_out(31 downto 28) &(Instr(25 downto 0)& "00") when Jump = '1' else --Jump
 PC_out; -- R-type / Lw/ Sw
 
 --RegFile
-ReadAddr1_Reg <= Instr(25 downto 21); 
-ReadAddr2_Reg <= Instr(20 downto 16);
-
 WriteAddr_Reg <= Instr(20 downto 16) when RegDst = '0' else -- choose rt or rd
 Instr(15 downto 11);
 WriteData_Reg <= ALU_Out when MemtoReg = '0' else -- choose rt or rd
-DATA_In;
+DATA_In; 
 
-
---ALU
-ALU_InA  <= ReadData1_Reg; 
-
-ALU_InB <= ReadData2_Reg when ALUSrc = '0' else -- Rtype/ BEQ
-
-Instr(15 downto 0)& x"0000" when InstrtoReg = '1' else -- LUI
-
-x"0000" & Instr(15 downto 0) when ALUOp = "11" and InstrtoReg = '0' else --ORI
-
---x"0000" & Instr(15 downto 0) when SignExtend = '0' else -- ORI/R Type
-
-signExtendout; -- LW/SW
-
-
---Control Unit
-opcode <= Instr(31 downto 26);
+--Output to top file
+Addr_Instr <= PC_out;
+Addr_Data <= ALU_Out;
+Data_Out <= ReadData2_Reg;
+ 
 
 
 end arch_MIPS;

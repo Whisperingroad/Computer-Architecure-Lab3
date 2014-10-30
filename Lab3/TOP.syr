@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total CPU time to Xst completion: 0.12 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total CPU time to Xst completion: 0.12 secs
  
 --> Reading design: TOP.prj
 
@@ -163,10 +163,10 @@ Synthesizing Unit <TOP>.
     Found 26-bit register for signal <CLK_DIV_PROCESS.clk_counter>.
     Found 1-bit register for signal <CLK>.
     Found 1-bit register for signal <LED<7>>.
-    Found 26-bit adder for signal <CLK_DIV_PROCESS.clk_counter[25]_GND_5_o_add_12_OUT> created at line 215.
+    Found 26-bit adder for signal <CLK_DIV_PROCESS.clk_counter[25]_GND_5_o_add_12_OUT> created at line 235.
     Found 256x32-bit Read Only RAM for signal <Addr_Instr[9]_GND_5_o_wide_mux_8_OUT>
-    Found 32-bit comparator lessequal for signal <n0000> created at line 160
-    Found 32-bit comparator lessequal for signal <n0002> created at line 160
+    Found 32-bit comparator lessequal for signal <n0000> created at line 180
+    Found 32-bit comparator lessequal for signal <n0002> created at line 180
     Summary:
 	inferred   2 RAM(s).
 	inferred   1 Adder/Subtractor(s).
@@ -422,17 +422,17 @@ Top Level Output File Name         : TOP.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 925
+# BELS                             : 906
 #      GND                         : 1
-#      INV                         : 2
+#      INV                         : 3
 #      LUT1                        : 50
-#      LUT2                        : 4
-#      LUT3                        : 29
-#      LUT4                        : 46
-#      LUT5                        : 91
-#      LUT6                        : 370
-#      MUXCY                       : 178
-#      MUXF7                       : 2
+#      LUT2                        : 6
+#      LUT3                        : 34
+#      LUT4                        : 56
+#      LUT5                        : 81
+#      LUT6                        : 337
+#      MUXCY                       : 185
+#      MUXF7                       : 1
 #      VCC                         : 1
 #      XORCY                       : 151
 # FlipFlops/Latches                : 65
@@ -459,16 +459,16 @@ Selected Device : 7a100tcsg324-1
 
 Slice Logic Utilization: 
  Number of Slice Registers:              65  out of  126800     0%  
- Number of Slice LUTs:                  768  out of  63400     1%  
-    Number used as Logic:               592  out of  63400     0%  
+ Number of Slice LUTs:                  743  out of  63400     1%  
+    Number used as Logic:               567  out of  63400     0%  
     Number used as Memory:              176  out of  19000     0%  
        Number used as RAM:              176
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    769
-   Number with an unused Flip Flop:     704  out of    769    91%  
-   Number with an unused LUT:             1  out of    769     0%  
-   Number of fully used LUT-FF pairs:    64  out of    769     8%  
+ Number of LUT Flip Flop pairs used:    744
+   Number with an unused Flip Flop:     679  out of    744    91%  
+   Number with an unused LUT:             1  out of    744     0%  
+   Number of fully used LUT-FF pairs:    64  out of    744     8%  
    Number of unique control sets:         3
 
 IO Utilization: 
@@ -511,8 +511,8 @@ Timing Summary:
 ---------------
 Speed Grade: -1
 
-   Minimum period: 11.188ns (Maximum Frequency: 89.382MHz)
-   Minimum input arrival time before clock: 3.511ns
+   Minimum period: 11.427ns (Maximum Frequency: 87.511MHz)
+   Minimum input arrival time before clock: 3.538ns
    Maximum output required time after clock: 1.028ns
    Maximum combinational path delay: No path found
 
@@ -570,24 +570,24 @@ Delay:               2.743ns (Levels of Logic = 27)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'CLK'
-  Clock period: 11.188ns (frequency: 89.382MHz)
-  Total number of paths / destination ports: 650372020 / 562
+  Clock period: 11.427ns (frequency: 87.511MHz)
+  Total number of paths / destination ports: 623721809 / 562
 -------------------------------------------------------------------------
-Delay:               11.188ns (Levels of Logic = 22)
-  Source:            MIPS1/PC1/PC_out_8 (FF)
+Delay:               11.427ns (Levels of Logic = 36)
+  Source:            MIPS1/PC1/PC_out_23 (FF)
   Destination:       MIPS1/PC1/PC_out_2 (FF)
   Source Clock:      CLK rising
   Destination Clock: CLK rising
 
-  Data Path: MIPS1/PC1/PC_out_8 to MIPS1/PC1/PC_out_2
+  Data Path: MIPS1/PC1/PC_out_23 to MIPS1/PC1/PC_out_2
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDC:C->Q              7   0.478   0.756  MIPS1/PC1/PC_out_8 (MIPS1/PC1/PC_out_8)
-     LUT3:I0->O           11   0.124   0.487  Mram_Addr_Instr[9]_GND_5_o_wide_mux_8_OUT1211_SW0 (N01)
-     LUT6:I5->O           11   0.124   0.985  Mram_Addr_Instr[9]_GND_5_o_wide_mux_8_OUT5811 (Addr_Instr[9]_GND_5_o_wide_mux_8_OUT<29>)
-     LUT6:I1->O           82   0.124   0.879  MIPS1/ControlUnit1/InstrtoReg<5>1 (MIPS1/InstrtoReg)
-     LUT6:I3->O            1   0.124   0.000  MIPS1/ALU1/Msub_AminusB_lut<0> (MIPS1/ALU1/Msub_AminusB_lut<0>)
+     FDC:C->Q              4   0.478   0.959  MIPS1/PC1/PC_out_23 (MIPS1/PC1/PC_out_23)
+     LUT6:I0->O           63   0.124   0.875  Addr_Instr[31]_GND_5_o_equal_8_o<31>3 (Addr_Instr[31]_GND_5_o_equal_8_o<31>2)
+     LUT4:I1->O            2   0.124   0.427  Addr_Instr[31]_GND_5_o_equal_8_o<31>5_1 (Addr_Instr[31]_GND_5_o_equal_8_o<31>5)
+     LUT5:I4->O           93   0.124   0.942  MIPS1/ALUSrc_INV_71_o11 (MIPS1/ALUSrc_INV_71_o)
+     LUT6:I2->O            1   0.124   0.000  MIPS1/ALU1/Msub_AminusB_lut<0> (MIPS1/ALU1/Msub_AminusB_lut<0>)
      MUXCY:S->O            1   0.472   0.000  MIPS1/ALU1/Msub_AminusB_cy<0> (MIPS1/ALU1/Msub_AminusB_cy<0>)
      MUXCY:CI->O           1   0.029   0.000  MIPS1/ALU1/Msub_AminusB_cy<1> (MIPS1/ALU1/Msub_AminusB_cy<1>)
      MUXCY:CI->O           1   0.029   0.000  MIPS1/ALU1/Msub_AminusB_cy<2> (MIPS1/ALU1/Msub_AminusB_cy<2>)
@@ -600,39 +600,53 @@ Delay:               11.188ns (Levels of Logic = 22)
      MUXCY:CI->O           1   0.029   0.000  MIPS1/ALU1/Msub_AminusB_cy<9> (MIPS1/ALU1/Msub_AminusB_cy<9>)
      MUXCY:CI->O           1   0.029   0.000  MIPS1/ALU1/Msub_AminusB_cy<10> (MIPS1/ALU1/Msub_AminusB_cy<10>)
      MUXCY:CI->O           1   0.029   0.000  MIPS1/ALU1/Msub_AminusB_cy<11> (MIPS1/ALU1/Msub_AminusB_cy<11>)
-     XORCY:CI->O           2   0.510   0.925  MIPS1/ALU1/Msub_AminusB_xor<12> (MIPS1/ALU1/AminusB<12>)
-     LUT6:I1->O            1   0.124   0.919  MIPS1/Branch_ALU_zero_AND_49_o4 (MIPS1/Branch_ALU_zero_AND_49_o4)
-     LUT6:I1->O           55   0.124   0.579  MIPS1/Branch_ALU_zero_AND_49_o9 (MIPS1/Branch_ALU_zero_AND_49_o)
-     LUT5:I4->O            1   0.124   0.939  MIPS1/Mmux_PC_in141 (MIPS1/PC_in<21>)
+     MUXCY:CI->O           1   0.029   0.000  MIPS1/ALU1/Msub_AminusB_cy<12> (MIPS1/ALU1/Msub_AminusB_cy<12>)
+     MUXCY:CI->O           1   0.029   0.000  MIPS1/ALU1/Msub_AminusB_cy<13> (MIPS1/ALU1/Msub_AminusB_cy<13>)
+     MUXCY:CI->O           1   0.029   0.000  MIPS1/ALU1/Msub_AminusB_cy<14> (MIPS1/ALU1/Msub_AminusB_cy<14>)
+     MUXCY:CI->O           1   0.029   0.000  MIPS1/ALU1/Msub_AminusB_cy<15> (MIPS1/ALU1/Msub_AminusB_cy<15>)
+     MUXCY:CI->O           1   0.029   0.000  MIPS1/ALU1/Msub_AminusB_cy<16> (MIPS1/ALU1/Msub_AminusB_cy<16>)
+     MUXCY:CI->O           1   0.029   0.000  MIPS1/ALU1/Msub_AminusB_cy<17> (MIPS1/ALU1/Msub_AminusB_cy<17>)
+     MUXCY:CI->O           1   0.029   0.000  MIPS1/ALU1/Msub_AminusB_cy<18> (MIPS1/ALU1/Msub_AminusB_cy<18>)
+     MUXCY:CI->O           1   0.029   0.000  MIPS1/ALU1/Msub_AminusB_cy<19> (MIPS1/ALU1/Msub_AminusB_cy<19>)
+     MUXCY:CI->O           1   0.029   0.000  MIPS1/ALU1/Msub_AminusB_cy<20> (MIPS1/ALU1/Msub_AminusB_cy<20>)
+     XORCY:CI->O           2   0.510   0.925  MIPS1/ALU1/Msub_AminusB_xor<21> (MIPS1/ALU1/AminusB<21>)
+     LUT6:I1->O            1   0.124   0.000  MIPS1/Branch_ALU_zero_AND_49_o_wg_lut<1> (MIPS1/Branch_ALU_zero_AND_49_o_wg_lut<1>)
+     MUXCY:S->O            1   0.472   0.000  MIPS1/Branch_ALU_zero_AND_49_o_wg_cy<1> (MIPS1/Branch_ALU_zero_AND_49_o_wg_cy<1>)
+     MUXCY:CI->O           1   0.029   0.000  MIPS1/Branch_ALU_zero_AND_49_o_wg_cy<2> (MIPS1/Branch_ALU_zero_AND_49_o_wg_cy<2>)
+     MUXCY:CI->O           1   0.029   0.000  MIPS1/Branch_ALU_zero_AND_49_o_wg_cy<3> (MIPS1/Branch_ALU_zero_AND_49_o_wg_cy<3>)
+     MUXCY:CI->O           1   0.029   0.000  MIPS1/Branch_ALU_zero_AND_49_o_wg_cy<4> (MIPS1/Branch_ALU_zero_AND_49_o_wg_cy<4>)
+     MUXCY:CI->O           1   0.029   0.000  MIPS1/Branch_ALU_zero_AND_49_o_wg_cy<5> (MIPS1/Branch_ALU_zero_AND_49_o_wg_cy<5>)
+     MUXCY:CI->O          55   0.334   0.579  MIPS1/Branch_ALU_zero_AND_49_o_wg_cy<6> (MIPS1/Branch_ALU_zero_AND_49_o)
+     LUT6:I5->O            1   0.124   0.939  MIPS1/Mmux_PC_in141 (MIPS1/PC_in<21>)
      LUT6:I0->O            1   0.124   0.776  MIPS1/PC1/RESET_PC_in[31]_OR_32_o5 (MIPS1/PC1/RESET_PC_in[31]_OR_32_o5)
      LUT6:I2->O           30   0.124   0.551  MIPS1/PC1/RESET_PC_in[31]_OR_32_o6 (MIPS1/PC1/RESET_PC_in[31]_OR_32_o)
      FDC:CLR                   0.494          MIPS1/PC1/PC_out_30
     ----------------------------------------
-    Total                     11.188ns (3.392ns logic, 7.796ns route)
-                                       (30.3% logic, 69.7% route)
+    Total                     11.427ns (4.454ns logic, 6.973ns route)
+                                       (39.0% logic, 61.0% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'CLK'
-  Total number of paths / destination ports: 90 / 62
+  Total number of paths / destination ports: 88 / 62
 -------------------------------------------------------------------------
-Offset:              3.511ns (Levels of Logic = 5)
-  Source:            DIP<11> (PAD)
+Offset:              3.538ns (Levels of Logic = 5)
+  Source:            DIP<8> (PAD)
   Destination:       MIPS1/RegFile1/Mram_registers2 (RAM)
   Destination Clock: CLK rising
 
-  Data Path: DIP<11> to MIPS1/RegFile1/Mram_registers2
+  Data Path: DIP<8> to MIPS1/RegFile1/Mram_registers2
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             2   0.001   0.925  DIP_11_IBUF (DIP_11_IBUF)
-     LUT5:I0->O            1   0.124   0.776  MemRead_dec_DIP_AND_51_o18_SW25 (N221)
-     LUT6:I2->O            1   0.124   0.536  MIPS1/Mmux_WriteData_Reg33_SW1 (N62)
-     LUT6:I4->O            1   0.124   0.000  MIPS1/Mmux_WriteData_Reg33_G (N289)
-     MUXF7:I1->O           2   0.368   0.405  MIPS1/Mmux_WriteData_Reg33 (MIPS1/WriteData_Reg<11>)
-     RAM32M:DIC1               0.128          MIPS1/RegFile1/Mram_registers12
+     IBUF:I->O             2   0.001   0.945  DIP_8_IBUF (DIP_8_IBUF)
+     LUT6:I0->O            1   0.124   0.421  MemRead_dec_DIP_AND_51_o16_SW2 (N111)
+     LUT6:I5->O            1   0.124   0.536  MemRead_dec_DIP_AND_51_o18_SW6 (N86)
+     LUT6:I4->O            1   0.124   0.421  MIPS1/Mmux_WriteData_Reg311_SW1 (N27)
+     LUT6:I5->O            2   0.124   0.405  MIPS1/Mmux_WriteData_Reg311 (MIPS1/WriteData_Reg<8>)
+     RAM32M:DIB0               0.313          MIPS1/RegFile1/Mram_registers12
     ----------------------------------------
-    Total                      3.511ns (0.869ns logic, 2.642ns route)
-                                       (24.8% logic, 75.2% route)
+    Total                      3.538ns (0.810ns logic, 2.728ns route)
+                                       (22.9% logic, 77.1% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'CLK_undiv'
@@ -682,7 +696,7 @@ Clock to Setup on destination clock CLK
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-CLK            |   11.188|         |         |         |
+CLK            |   11.427|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock CLK_undiv
@@ -697,11 +711,11 @@ CLK_undiv      |    2.743|         |         |         |
 
 
 Total REAL time to Xst completion: 12.00 secs
-Total CPU time to Xst completion: 12.36 secs
+Total CPU time to Xst completion: 12.53 secs
  
 --> 
 
-Total memory usage is 354564 kilobytes
+Total memory usage is 354620 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    2 (   0 filtered)

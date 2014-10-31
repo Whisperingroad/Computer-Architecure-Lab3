@@ -104,7 +104,7 @@ type MEM_256x32 is array (0 to 255) of std_logic_vector (31 downto 0); -- 256 wo
 constant INSTR_MEM : MEM_256x32 := (
 
 
-
+--comments written in Blinky_with_offset asm file
 			x"3c090000",
 			x"35290001",
 			x"3c081002",
